@@ -6,8 +6,7 @@
   display: flex;
   justify-content: space-between;
   background-color: #1c1b1b;
-  padding: 10px 15px;
-  height: 50px;
+  padding: 10px 50px;
   position: fixed;
   top: 0;
   left: 0;
@@ -27,6 +26,10 @@
   color: #5d5a5a;
 }
 
+.movie-header-like {
+  color: #fff;
+}
+
 .movie-header input {
   border-radius: 40px;
   background-color: unset;
@@ -36,8 +39,29 @@
   outline: none;
 }
 
+.movie-header-right {
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+}
+
+.movie-heart-button {
+  background-color: unset;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.movie-heart-icon {
+  width: 35px;
+  height: 35px;
+}
+
 .movie-list {
-  padding-top: 50px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-top: 70px;
+  padding-left: 70px;
+  padding-right: 70px;
 }
