@@ -61,7 +61,8 @@
   height: 35px;
 }
 
-.movie-list {
+.movie-list,
+.movie-message {
   padding-top: 70px;
   padding-left: 70px;
   padding-right: 70px;
