@@ -3,21 +3,22 @@ import MovieList from "../components/MovieList";
 import { useEffect, useState, type KeyboardEvent } from "react";
 import fetchMovieData from "../api/fetchMovieData";
 import type { MovieData } from "../types/MovieData";
+import { useSearchParams } from "react-router-dom";
 
 const HomePage = () => {
   const [movies, setMovies] = useState<MovieData[]>([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const query = searchParams.get("query") || "";
+  const [searchTerm, setSearchTerm] = useState(query);
 
   useEffect(() => {
-    fetchMovieData().then((data) => setMovies(data));
-  }, []);
+    fetchMovieData(query).then((data) => setMovies(data));
+  }, [query]);
 
-  const handleSearch = async (
-    e: KeyboardEvent<HTMLInputElement>,
-    query: string
-  ) => {
+  const handleSearch = async (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      fetchMovieData(query).then((data) => setMovies(data));
+      setSearchParams({ query: searchTerm });
     }
   };
 
@@ -32,7 +33,7 @@ const HomePage = () => {
           placeholder="Search..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          onKeyDown={(e) => handleSearch(e, searchTerm)}
+          onKeyDown={(e) => handleSearch(e)}
         />
       </header>
       <MovieList movies={movies} />
