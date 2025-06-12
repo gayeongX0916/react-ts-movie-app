@@ -1,49 +1,25 @@
-import exmapleImg from "../assets/heart.png";
+import type { MovieData } from "../types/MovieData";
 import "./MovieList.css";
 
-const MovieList = () => {
+type MovieListProps = {
+  movies: MovieData[];
+};
+
+const MovieList = ({ movies }: MovieListProps) => {
   return (
     <div className="movie-list">
-      <button className="movie-card">
-        <img src={exmapleImg} alt="하트" width={100} height={170} />
-        <span>영화 제목</span>
-        <span>2021-01-01</span>
-      </button>
-      <div className="movie-card">
-        <img src={exmapleImg} alt="하트" width={100} height={170} />
-        <span>영화 제목</span>
-        <span>2021-01-01</span>
-      </div>
-      <div className="movie-card">
-        <img src={exmapleImg} alt="하트" width={100} height={170} />
-        <span>영화 제목</span>
-        <span>2021-01-01</span>
-      </div>
-      <div className="movie-card">
-        <img src={exmapleImg} alt="하트" width={100} height={170} />
-        <span>영화 제목</span>
-        <span>2021-01-01</span>
-      </div>
-      <div className="movie-card">
-        <img src={exmapleImg} alt="하트" width={100} height={170} />
-        <span>영화 제목</span>
-        <span>2021-01-01</span>
-      </div>
-      <div className="movie-card">
-        <img src={exmapleImg} alt="하트" width={100} height={170} />
-        <span>영화 제목</span>
-        <span>2021-01-01</span>
-      </div>
-      <div className="movie-card">
-        <img src={exmapleImg} alt="하트" width={100} height={170} />
-        <span>영화 제목</span>
-        <span>2021-01-01</span>
-      </div>
-      <div className="movie-card">
-        <img src={exmapleImg} alt="하트" width={100} height={170} />
-        <span>영화 제목</span>
-        <span>2021-01-01</span>
-      </div>
+      {movies.map((item) => (
+        <button className="movie-card">
+          <img
+            src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+            alt="하트"
+            width={100}
+            height={170}
+          />
+          <span>{item.title}</span>
+          <span>{item.release_date}</span>
+        </button>
+      ))}
     </div>
   );
 };

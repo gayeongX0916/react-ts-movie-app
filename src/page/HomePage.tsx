@@ -1,8 +1,16 @@
 import "../App.css";
 import MovieList from "../components/MovieList";
-import heartIcon from "../assets/heart.png";
+import { useEffect, useState } from "react";
+import fetchMovieData from "../api/fetchMovieData";
+import type { MovieData } from "../types/MovieData";
 
 const HomePage = () => {
+  const [movies, setMovies] = useState<MovieData[]>([]);
+
+  useEffect(() => {
+    fetchMovieData().then((data) => setMovies(data));
+  }, []);
+
   return (
     <div className="movie-app">
       <header className="movie-header">
@@ -10,14 +18,9 @@ const HomePage = () => {
           <h3>Movie</h3>
           <h3>View</h3>
         </div>
-        <div className="movie-header-right">
-          <input placeholder="Search..." />
-          <button className="movie-heart-button">
-            <img src={heartIcon} alt="하트" className="movie-heart-icon" />
-          </button>
-        </div>
+        <input placeholder="Search..." />
       </header>
-      <MovieList />
+      <MovieList movies={movies} />
     </div>
   );
 };
