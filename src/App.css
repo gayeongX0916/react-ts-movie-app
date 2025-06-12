@@ -15,6 +15,7 @@
 
 .movie-header-title {
   display: flex;
+  cursor: pointer;
 }
 
 .movie-header h3 {

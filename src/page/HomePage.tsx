@@ -3,7 +3,7 @@ import MovieList from "../components/MovieList";
 import { useEffect, useState, type KeyboardEvent } from "react";
 import fetchMovieData from "../api/fetchMovieData";
 import type { MovieData } from "../types/MovieData";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const HomePage = () => {
   const [movies, setMovies] = useState<MovieData[]>([]);
@@ -11,6 +11,8 @@ const HomePage = () => {
 
   const query = searchParams.get("query") || "";
   const [searchTerm, setSearchTerm] = useState(query);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchMovieData(query).then((data) => setMovies(data));
@@ -22,10 +24,15 @@ const HomePage = () => {
     }
   };
 
+  const handleClick = () => {
+    navigate("/");
+    setSearchTerm("");
+  };
+
   return (
     <div className="movie-app">
       <header className="movie-header">
-        <div className="movie-header-title">
+        <div className="movie-header-title" onClick={handleClick}>
           <h3>Movie</h3>
           <h3>View</h3>
         </div>
