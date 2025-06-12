@@ -17,7 +17,8 @@ const MovieList = ({ movies }: MovieListProps) => {
             height={170}
           />
           <span>{item.title}</span>
-          <span>{item.release_date}</span>
+          <span>개봉일 : {item.release_date}</span>
+          <span>평점 : {item.vote_average}</span>
         </button>
       ))}
     </div>
