@@ -15,3 +15,6 @@ React + TypeScript + Vite로 만든 영화 검색 앱
 - React
 - TypeScript
 - Vite
+
+![](https://velog.velcdn.com/images/gayeong__0916/post/c6156794-194a-4243-9ff7-f4e60cff9359/image.png)
+![](https://velog.velcdn.com/images/gayeong__0916/post/60a4285a-3756-4e53-9c4b-81b638fa4cec/image.png)
